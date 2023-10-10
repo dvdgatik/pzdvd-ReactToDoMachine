@@ -1,5 +1,12 @@
 import logo from './platzi.webp';
 import './App.css';
+// import through an object allows to don't type wrong the name of component
+// exports nombrados
+import { TodoCounter }  from './TodoCounter';
+import { TodoSearch } from './TodoSearch';
+import { TodoList } from './TodoList';
+import { TodoItem } from './TodoItem';
+import { CreateToDoButton } from './CreateToDoButton';
 
 // Compoment
 function App() {
@@ -10,36 +17,25 @@ function App() {
   // Elements are encapsulated by the components
   return (
     <div className="App">
-      <TodoItem/>
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edita el archivo <code>src/App.js</code> y guarda para recargar.
-        </p>
-        <a
-          className="App-link"
-          href="https://platzi.com/reactjs"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Let's Learn React
-        </a>
-      </header>
+      <TodoCounter/>
+      <TodoSearch/>
+      <TodoList>
+        <TodoItem/>
+        <TodoItem/>
+        <TodoItem/>
+      </TodoList>
+      <CreateToDoButton/> 
     </div>
   );
 }
 
+
+// It is brave to know how to delete the code
 // We can take components and insert to another components
 
-function TodoItem() {
-    return (
-      <li>
-        <span>V</span>
-        <p>Llorar con la Llorona</p>
-        <span>X</span>
-      </li>
-    );
-}
+// First Call Component then Create Component
+
+
 
 /**
  * 
