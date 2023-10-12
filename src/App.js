@@ -1,5 +1,5 @@
 import logo from './platzi.webp';
-import './App.css';
+//import './App.css';
 // import through an object allows to don't type wrong the name of component
 // exports nombrados
 import React from 'react';
@@ -21,16 +21,14 @@ function App() {
 
   const defaultTodos = [
     { text: 'Cortar Cebbolla', completed: true},
-    { text: 'Complete course Advanced React', completed: false},
+    { text: 'Complete course Advanced React', completed: true},
     { text: 'LLorar con la llorona', completed: false},
     { text: 'Complete Dot Net Advanced Course', completed: false},
   ]
 
   return (
-    <React.Fragment>
+    <>
       <TodoCounter completed={16} total={25}/>
-      <TodoCounter completed={20} total={30}/>
-      <TodoCounter completed={17} total={45}/>
       <TodoSearch/>
       <TodoList>
         {defaultTodos.map(todo => (
@@ -42,7 +40,7 @@ function App() {
         ))}
       </TodoList>
       <CreateToDoButton/> 
-      </React.Fragment>
+      </>
   );
 }
 
