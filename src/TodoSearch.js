@@ -36,10 +36,8 @@ Compara el nuevo Virtual DOM con el anterior (usando un algoritmo llamado "recon
 Actualiza solo los cambios necesarios en el DOM real, mejorando el rendimiento.
 
 */
-function TodoSearch() {
-    const [searchValue, setSearchValue] =  useState('');
-
-    console.log(searchValue)
+function TodoSearch({searchValue, setSearchValue}) {
+  
 
     return (
         <input 

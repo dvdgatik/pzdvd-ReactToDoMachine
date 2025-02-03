@@ -2,7 +2,7 @@ import logo from './platzi.webp';
 //import './App.css';
 // import through an object allows to don't type wrong the name of component
 // exports nombrados
-import React from 'react';
+import React, {useState} from 'react';
 import { TodoCounter }  from './TodoCounter';
 import { TodoSearch } from './TodoSearch';
 import { TodoList } from './TodoList';
@@ -26,12 +26,25 @@ function App() {
     { id: crypto.randomUUID(), text: 'Complete course Advanced React', completed: true},
     { id: crypto.randomUUID(), text: 'LLorar con la llorona', completed: false},
     { id: crypto.randomUUID(), text: 'Complete Dot Net Advanced Course', completed: false},
+    { id: crypto.randomUUID(), text: 'Usar estados derivados', completed: true},
   ]
+
+  //Estados derivados, variables, propiedades, calculos que hacemos a partir de un estado
+
+  const [searchValue, setSearchValue] =  useState('');
+  const [todos, setTodos]= useState(defaultTodos)
+  console.log(searchValue)
+
+  // find primera coincidencia
+  // todas las coincidencias
+  // doble negacion falso o verdadero si no es null o undefined
+  const completedTodos = todos.filter(todo => !!todo.completed).length;
+  const totalTodos = todos.length;
 
   return (
     <> {/*React.Fragment*/}
-      <TodoCounter completed={16} total={25}/>
-      <TodoSearch/>
+      <TodoCounter completed={completedTodos} total={totalTodos}/>
+      <TodoSearch searchValue={searchValue} setSearchValue={setSearchValue}/>
       <TodoList>
         {defaultTodos.map(todo => (
           <TodoItem 

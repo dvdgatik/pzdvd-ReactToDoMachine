@@ -110,3 +110,9 @@ src index.js
     usamos createRoot(elemento donde se renderizará la aplicacion usando getElementByID)
   usamos el metodo render(el componente que renderizaremos en este caso App sera el componente inicial)
   
+
+
+  - Como se pueden comunicar estados entre componentes padres y compoentes hijos
+  - Como podemos crear estados derivados para crear nuevos calculos a partir de nuestros primeros estados
+- ¿Como se comparten los estados de un componente hijo a un padre?
+  - Solo se pueden compartir estados de padres a hijos no al reves
