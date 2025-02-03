@@ -11,8 +11,10 @@ function TodoCounter({total, completed}) {
 export { TodoCounter };
 
 /* There are two way to add styles in React:
-1: inline styles
+1: inline styles by object or variable with objet
 2: style sheets
+
+strings for relative units
 */ 
 
 /*
