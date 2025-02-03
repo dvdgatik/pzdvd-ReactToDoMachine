@@ -102,4 +102,28 @@ Es útil cuando un módulo contiene varias funciones, clases o constantes.
  * }
  */
 
+/*
+Props
+Informacion Estatica: harcodeada datos ecritos en el mismo codigo
+Informacion Dinamica: por props datos que cambian conforme utilizemos los componentes o 
+el usuario utilice la informacion
+
+props: 
+
+Las props son una forma de parametrizar nuestros componentes igual que hacemos con las funciones. 
+Podemos pasarle cualquier tipo de dato a un componente, incluso otros componentes.
+
+Las props son las propiedades de un componente. Son datos que se pasan de un componente a otro. Por ejemplo, si tienes un componente Button que muestra un botón, puedes pasarle una prop text para que el botón muestre ese texto:
+
+function Button(props) {
+  return <button>{props.text}</button>
+}
+
+Los props (abreviatura de "properties") son un mecanismo en React que permite pasar datos de un componente padre a un componente hijo. Son inmutables, lo que significa que un componente hijo no puede modificarlos directamente.
+
+Piensa en los props como los parámetros de una función, pero en este caso se pasan a un componente.
+
+React components use props to communicate with each other. Every parent component can pass some information to its child components by giving them props. Props might remind you of HTML attributes, but you can pass any JavaScript value through them, including objects, arrays, and functions.
+*/
+
 export default App;
