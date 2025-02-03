@@ -18,6 +18,8 @@ function App() {
   // Elements are encapsulated by the components
   // React dont translate props as attributes
   // If you want to add attributes you need to add in the element of the component
+  // Los elementos son encapsulados por los componentes
+  // Los elementos (JSX) (que aun no son html) son los que se terminan transformando en html
 
   const defaultTodos = [
     { text: 'Cortar Cebbolla', completed: true},
@@ -70,14 +72,20 @@ function App() {
 /**
  * 
  * This is JavaScript
+ * createElement es una funcion
  * 
+ * Function TodoCount(props) {
+ * 
+ * return(
  * React.CreateElement(
  * 'h1',
  * null,
  * `Completaste
  * ${props.completed} de 
  * ${props.total} TODOs`
+ * );
  * )
+ * }
  */
 
 export default App;
