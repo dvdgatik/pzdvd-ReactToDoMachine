@@ -22,10 +22,10 @@ function App() {
   // Los elementos (JSX) (que aun no son html) son los que se terminan transformando en html
 
   const defaultTodos = [
-    { text: 'Cortar Cebbolla', completed: true},
-    { text: 'Complete course Advanced React', completed: true},
-    { text: 'LLorar con la llorona', completed: false},
-    { text: 'Complete Dot Net Advanced Course', completed: false},
+    { id: crypto.randomUUID(), text: 'Cortar Cebbolla', completed: true},
+    { id: crypto.randomUUID(), text: 'Complete course Advanced React', completed: true},
+    { id: crypto.randomUUID(), text: 'LLorar con la llorona', completed: false},
+    { id: crypto.randomUUID(), text: 'Complete Dot Net Advanced Course', completed: false},
   ]
 
   return (
@@ -36,7 +36,7 @@ function App() {
         {defaultTodos.map(todo => (
           <TodoItem 
             text={todo.text} 
-            key={todo.text}
+            key={todo.id}
             completed={todo.completed}
           />
         ))}
