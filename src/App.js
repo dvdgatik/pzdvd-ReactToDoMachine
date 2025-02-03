@@ -52,6 +52,8 @@ function App() {
 
 // It is brave to know how to delete the code
 // We can take components and insert to another components
+  //we can create  componentes in the same file or separte file
+  // we add componentes into another componentes
 
 // First Call Component then Create Component
 

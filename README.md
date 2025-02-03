@@ -73,3 +73,40 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/d
 ### `npm run build` fails to minify
 
 This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+
+
+## Introduccion a React (Fundamentos)
+
+React.js es una de las herramientas/library mas populares en JavaScript
+- Nos ayuda a crear aplicaciones interactivas
+  - Multiplataforma
+  - Declarativo
+    - React te ayuda a crear interfaces de usuario interactivas de forma sencilla. Diseña vistas simples para cada estado en tu aplicación, y React se encargará de actualizar y renderizar de manera eficiente los componentes correctos cuando los datos cambien.
+
+Las vistas declarativas hacen que tu código sea más predecible, por lo tanto, fácil de depurar.
+  - Basado en componentes
+
+Crea componentes encapsulados que manejen su propio estado, y conviértelos en interfaces de usuario complejas.
+
+Ya que la lógica de los componentes está escrita en JavaScript y no en plantillas, puedes pasar datos de forma sencilla a través de tu aplicación y mantener el estado fuera del DOM.
+
+-Fue constriuida con Create React App
+
+
+¿que es un componente?
+- reutilizable e interacrtivo
+
+
+build, crea una version del proyecto que se pueda desplegar a produccion
+
+eslint (variables no utilizadas)
+ browserList a que version de EC debe transpilar el proyecto
+
+ robots.txt, solo para saber a que se le puede hacer web scrapping
+
+src index.js
+  Importamos react 
+  Importamos ReactDOM
+    usamos createRoot(elemento donde se renderizará la aplicacion usando getElementByID)
+  usamos el metodo render(el componente que renderizaremos en este caso App sera el componente inicial)
+  
