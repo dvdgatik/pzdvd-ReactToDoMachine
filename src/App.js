@@ -56,13 +56,40 @@ pueden ser convertidos a su equivalente en minúsculas, mientras que otros carac
   // doble negacion falso o verdadero si no es null o undefined
   const completedTodos = todos.filter(todo => !!todo.completed).length;
   const totalTodos = todos.length;
-  
+
   const searchedTodos =  todos.filter(todo => {
     const todoText = todo.text.toLowerCase()
     const searchValueText = searchValue.toLowerCase()
     return todoText.includes(searchValueText)
   })
 
+  const handleCompleteTodo = (id, completed) => () => {
+    //crea una copia del arreglo
+    const newTodos = [...todos]
+    const todoIndex =  newTodos.findIndex(
+      (todo) => todo.id == id
+    );
+    //Delete 
+    //newTodos.splice(todoIndex, 1)
+    newTodos[todoIndex].completed = !completed
+    console.log(newTodos[todoIndex])
+    setTodos(newTodos);
+  }
+
+  const handleDeleteTodo = (id) => () => {
+    const newTodos = [...todos]
+    const todoToDelete = newTodos.filter(todo=> todo.id !== id)
+    setTodos(todoToDelete)
+  }
+
+  /**
+   Estás creando una función dentro de otra función, lo cual es similar a lo que hacen las HOF. Lo que realmente pasa aquí es:
+
+() => handleDelete(index) crea una nueva función anónima en cada render.
+Esa nueva función no se ejecuta inmediatamente sino hasta que el usuario haga clic.
+La función anónima actúa como un wrapper (envoltorio) para poder pasar parámetros correctamente.
+Aunque no es una HOF pura, sí es un uso práctico del concepto de funciones que retornan funciones.
+   */
 
   return (
     <> {/*React.Fragment*/}
@@ -74,6 +101,8 @@ pueden ser convertidos a su equivalente en minúsculas, mientras que otros carac
             text={todo.text} 
             key={todo.id}
             completed={todo.completed}
+            onComplete={handleCompleteTodo(todo.id, todo.completed)}
+            onDelete={handleDeleteTodo(todo.id)}
           />
         ))}
       </TodoList>
