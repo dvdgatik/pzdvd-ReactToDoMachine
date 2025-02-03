@@ -21,6 +21,22 @@ function App() {
   // Los elementos son encapsulados por los componentes
   // Los elementos (JSX) (que aun no son html) son los que se terminan transformando en html
 
+
+  /*
+  La diferencia entre los métodos toLowerCase() y toLocaleLowerCase() en JavaScript 
+  está relacionada con la forma en que se procesan los caracteres en mayúsculas y acentuados en diferentes idiomas.
+
+toLowerCase() convierte una cadena de texto en minúsculas, utilizando las reglas de conversión
+ que se aplican a los caracteres ASCII (caracteres en inglés y otros idiomas europeos que no tienen acentos)
+
+Por otro lado, toLocaleLowerCase() también convierte una cadena de texto en minúsculas, 
+pero utiliza las reglas de conversión específicas del idioma y 
+la ubicación (localización) en la que se está ejecutando el código. 
+Esto significa que, en función de la localización, 
+algunos caracteres con acentos o diacríticos (como la letra "á" en español) 
+pueden ser convertidos a su equivalente en minúsculas, mientras que otros caracteres pueden permanecer sin cambios.
+  */
+
   const defaultTodos = [
     { id: crypto.randomUUID(), text: 'Cortar Cebbolla', completed: true},
     { id: crypto.randomUUID(), text: 'Complete course Advanced React', completed: true},
@@ -40,13 +56,20 @@ function App() {
   // doble negacion falso o verdadero si no es null o undefined
   const completedTodos = todos.filter(todo => !!todo.completed).length;
   const totalTodos = todos.length;
+  
+  const searchedTodos =  todos.filter(todo => {
+    const todoText = todo.text.toLowerCase()
+    const searchValueText = searchValue.toLowerCase()
+    return todoText.includes(searchValueText)
+  })
+
 
   return (
     <> {/*React.Fragment*/}
       <TodoCounter completed={completedTodos} total={totalTodos}/>
       <TodoSearch searchValue={searchValue} setSearchValue={setSearchValue}/>
       <TodoList>
-        {defaultTodos.map(todo => (
+        {searchedTodos.map(todo => (
           <TodoItem 
             text={todo.text} 
             key={todo.id}
