@@ -124,6 +124,15 @@ Los props (abreviatura de "properties") son un mecanismo en React que permite pa
 Piensa en los props como los parámetros de una función, pero en este caso se pasan a un componente.
 
 React components use props to communicate with each other. Every parent component can pass some information to its child components by giving them props. Props might remind you of HTML attributes, but you can pass any JavaScript value through them, including objects, arrays, and functions.
+
+
+
+Las props por dentro son un objeto que tiene distintas propiedades
+
+hay dos formas por el nombre props ejemp (props.nombre_de_la_propiedad_enviada)
+
+destructurado
+por objeto ({nombre_de_la_propiedad_enviada})
 */
 
 export default App;
