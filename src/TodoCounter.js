@@ -24,4 +24,8 @@ as argument name
 props
 as destructuring object
 {props_name, etc...}
+
+
+Las props se definen en los elementos (los que terminaran siendo etiquetas html)
+las props no son lo mismo que atributos, pueden considerarse mas como parametros de una funcion
 */
