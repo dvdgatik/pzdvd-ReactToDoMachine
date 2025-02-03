@@ -57,7 +57,7 @@ function App() {
   //we can create  componentes in the same file or separte file
   // we add componentes into another componentes
 
-// First Call Component then Create Component
+// First Call Component then Create Component or the opposite (two ways are valid)
 
 // How I can render a list of components/elements: render arrays
 
