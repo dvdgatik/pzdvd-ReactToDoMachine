@@ -72,8 +72,11 @@ function App() {
 Permite exportar un solo valor por módulo.
 El nombre de la importación puede ser cualquiera.
 Es ideal cuando un módulo tiene un único valor principal que debe exportar
+Se usa cuando un archivo contiene un solo componente principal.
+
 
 2. export nombrado (export {})
+Se usa cuando exportas múltiples componentes, funciones o hooks desde un solo archivo.
 Permite exportar múltiples valores en un mismo módulo.
 Los nombres deben coincidir exactamente al importar.
 Es útil cuando un módulo contiene varias funciones, clases o constantes.
