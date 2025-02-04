@@ -22,7 +22,7 @@ function AppUI({
         <TodoList>
             {isLoading && <p>Cargando...</p>}
             {hasError && <p>Hubo un Error</p>}
-            {searchValue !== '' && (
+            {searchValue !== '' && searchedTodos.length === 0  && (
                 <p>No se encontraron conincidencias</p>
             )}
             {searchedTodos.length === 0 && searchValue === '' &&  !isLoading && (
