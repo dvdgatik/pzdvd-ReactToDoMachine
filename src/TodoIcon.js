@@ -8,7 +8,6 @@ const iconTypes = {
     delete: (color) => <DeleteSVG className="Icon-svg" fill={color}/>,
 };
 
-
 function TodoIcon({type, color, onClick}) {
     return (
         <span onClick={onClick} className={`Icon-container Icon-container-${type}`}>
@@ -16,6 +15,5 @@ function TodoIcon({type, color, onClick}) {
         </span>
     )
 }
-
 
 export { TodoIcon }
