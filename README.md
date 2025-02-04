@@ -116,3 +116,9 @@ src index.js
   - Como podemos crear estados derivados para crear nuevos calculos a partir de nuestros primeros estados
 - ¿Como se comparten los estados de un componente hijo a un padre?
   - Solo se pueden compartir estados de padres a hijos no al reves
+
+- Localstorage es una herramienta que nos ayuda a hacer persistencia en el navegador
+- El localStorage es una API del navegador
+- El localStorage no puede guardar estructuras complejas, solamente strings
+- podemos usar JSON.stringify para convertir un objeto, array etc en un string
+- Para convertir un string en objeto usamos JSON.parse

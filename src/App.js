@@ -37,18 +37,35 @@ algunos caracteres con acentos o diacríticos (como la letra "á" en español)
 pueden ser convertidos a su equivalente en minúsculas, mientras que otros caracteres pueden permanecer sin cambios.
   */
 
-  const defaultTodos = [
-    { id: crypto.randomUUID(), text: 'Cortar Cebbolla', completed: true},
-    { id: crypto.randomUUID(), text: 'Complete course Advanced React', completed: true},
-    { id: crypto.randomUUID(), text: 'LLorar con la llorona', completed: false},
-    { id: crypto.randomUUID(), text: 'Complete Dot Net Advanced Course', completed: false},
-    { id: crypto.randomUUID(), text: 'Usar estados derivados', completed: true},
-  ]
+//   const defaultTodos = [
+//     { id: crypto.randomUUID(), text: 'Cortar Cebbolla', completed: true},
+//     { id: crypto.randomUUID(), text: 'Complete course Advanced React', completed: true},
+//     { id: crypto.randomUUID(), text: 'LLorar con la llorona', completed: false},
+//     { id: crypto.randomUUID(), text: 'Complete Dot Net Advanced Course', completed: false},
+//     { id: crypto.randomUUID(), text: 'Usar estados derivados', completed: true},
+//   ]
+
+// localStorage.setItem('TODOS_V1', defaultTodos)
+//localStorage.removeItemItem('TODOS_V1')
+
+
 
   //Estados derivados, variables, propiedades, calculos que hacemos a partir de un estado
 
+  //initial state
+  const localStorageTodos = localStorage.getItem('TODOS_V1');
+  let parsedTodos;
+
+  if(!localStorageTodos) {
+    localStorage.setItem('TODOS_V1', JSON.stringify([]))
+     parsedTodos = []
+  } else {
+    parsedTodos = JSON.parse(localStorageTodos)
+  }
+
   const [searchValue, setSearchValue] =  useState('');
-  const [todos, setTodos]= useState(defaultTodos)
+
+  const [todos, setTodos]= useState(parsedTodos || [])
   console.log(searchValue)
 
   // find primera coincidencia
@@ -57,11 +74,16 @@ pueden ser convertidos a su equivalente en minúsculas, mientras que otros carac
   const completedTodos = todos.filter(todo => !!todo.completed).length;
   const totalTodos = todos.length;
 
-  const searchedTodos =  todos.filter(todo => {
+  const searchedTodos = todos.filter(todo => {
     const todoText = todo.text.toLowerCase()
     const searchValueText = searchValue.toLowerCase()
     return todoText.includes(searchValueText)
   })
+
+  const saveTodos = (newTodos) => {
+    localStorage.setItem('TODOS_V1', JSON.stringify(newTodos))
+    setTodos(newTodos)
+  }
 
   const handleCompleteTodo = (id, completed) => () => {
     //crea una copia del arreglo
@@ -73,13 +95,16 @@ pueden ser convertidos a su equivalente en minúsculas, mientras que otros carac
     //newTodos.splice(todoIndex, 1)
     newTodos[todoIndex].completed = !completed
     console.log(newTodos[todoIndex])
-    setTodos(newTodos);
+    //setTodos(newTodos);
+    saveTodos(newTodos)
+
   }
 
   const handleDeleteTodo = (id) => () => {
     const newTodos = [...todos]
     const todoToDelete = newTodos.filter(todo=> todo.id !== id)
-    setTodos(todoToDelete)
+    //setTodos(todoToDelete)
+    saveTodos(todoToDelete)
   }
 
   /**
@@ -96,7 +121,10 @@ Aunque no es una HOF pura, sí es un uso práctico del concepto de funciones que
       <TodoCounter completed={completedTodos} total={totalTodos}/>
       <TodoSearch searchValue={searchValue} setSearchValue={setSearchValue}/>
       <TodoList>
-        {searchedTodos.map(todo => (
+        {!searchedTodos.length > 0 && (
+          <p>No hay Todos</p>
+        )}
+        {searchedTodos.length > 0 && searchedTodos.map(todo => (
           <TodoItem 
             text={todo.text} 
             key={todo.id}
@@ -198,6 +226,20 @@ hay dos formas por el nombre props ejemp (props.nombre_de_la_propiedad_enviada)
 
 destructurado
 por objeto ({nombre_de_la_propiedad_enviada})
+
+
+
+
+
+Evita acceder al localStorage dentro del componente
+Acceder a los valores del localStorage dentro del componente es muy pesado en cuanto al rendimiento, ya que se ejecuta sincrónicamente en cada re-renderizado del componente. En su lugar, puedes leerlo utilizando un callback que retorne el valor inicial del useState, esto permitirá acceder a la información una sola vez al momento que se crea el componente, esto por la definición de useState. .
+
+
+const [todos, setTodos] = useState(() => {
+  const todosFromStorage = window.localStorage.getItem('TODOS_V1')
+  if (todosFromStorage) return JSON.parse(todosFromStorage)
+  return []
+})
 */
 
 export default App;
