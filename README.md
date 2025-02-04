@@ -122,3 +122,179 @@ src index.js
 - El localStorage no puede guardar estructuras complejas, solamente strings
 - podemos usar JSON.stringify para convertir un objeto, array etc en un string
 - Para convertir un string en objeto usamos JSON.parse
+
+
+- Nuestor codigo se volvio mas complejo en logica añadiendo muchas lineas de codigo en App por el manejo del local stora estado etc
+- Podemos usar una herramienta llamada custom hooks que nos permite abstraer logica de nuestros componentes y reutilizarla
+- crearemos un customHook para local storage
+
+
+¿Cuando vale la pena implementar los custom hooks?
+- En realidad no hay una guia escrita en piedra pero 
+
+- Cuando el componente tenga muchas responsabilidades
+
+CUSTOM HOOKS
+React viene con varios Hooks integrados como useState, useContext y useEffect. A veces, desearás que haya un Hook para algún propósito más específico: por ejemplo, para obtener datos, para mantener un seguimiento de si un usuario está conectado o para conectarse a una sala de chat. Es posible que no encuentres estos Hooks en React, pero puedes crear tus propios Hooks para las necesidades de tu aplicación.
+
+Permite: compartir logica entre componentes y tener el codigo del componente como tal mucho mas limpio
+Al abstraer usando Hooks nos facilita la lectura del codigo, teniendo las partes que le competen al componente en una seccion y las partes de la funcionalidad del hook en otra diferente.
+Cuando vale la pena implementarlo? Bajo nuestro criterio cuando veamos necesario abstraer una logica.
+
+
+
+
+
+🔹 1. Cuando necesitas manejar estado dentro de un componente funcional
+Si tu componente necesita recordar valores entre renders (como un contador, un formulario o un toggle
+
+
+
+
+
+
+
+You said:
+cuando vale la pena utilizar custom hooks?
+No hay una regla escrita en piedra para saber cuando usar custom hook sin embargo hay algunos usos comunes
+ChatGPT said:
+ChatGPT
+📌 ¿Cuándo vale la pena utilizar Custom Hooks en React?
+Los Custom Hooks son útiles cuando quieres reutilizar lógica de estado o efectos en varios componentes sin repetir código. Vale la pena usarlos en los siguientes casos:
+
+🚀 1. Cuando necesitas reutilizar lógica en múltiples componentes
+Si varios componentes comparten la misma lógica (como manejar un contador, manejar eventos del navegador o realizar peticiones a una API), encapsularla en un Custom Hook mejora la organización y reusabilidad del código.
+
+🔹 Ejemplo: Un useFetch que puede ser usado en diferentes partes de la aplicación para hacer peticiones HTTP.
+
+jsx
+Copy
+Edit
+import { useState, useEffect } from "react";
+
+function useFetch(url) {
+  const [data, setData] = useState(null);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
+
+  useEffect(() => {
+    setLoading(true);
+    fetch(url)
+      .then((response) => response.json())
+      .then((data) => {
+        setData(data);
+        setLoading(false);
+      })
+      .catch((error) => {
+        setError(error);
+        setLoading(false);
+      });
+  }, [url]);
+
+  return { data, loading, error };
+}
+✅ Beneficio: Se puede usar en cualquier componente sin repetir la lógica de fetch.
+
+jsx
+Copy
+Edit
+const { data, loading, error } = useFetch("https://api.example.com/users");
+🔹 2. Cuando la lógica de un componente es compleja y repetitiva
+Si un componente tiene mucha lógica dentro de useEffect, useState, y otras funciones, extraerlo en un Custom Hook ayuda a que el componente sea más limpio y fácil de leer.
+
+🔹 Ejemplo: Un useLocalStorage para manejar el almacenamiento en localStorage en diferentes componentes.
+
+jsx
+Copy
+Edit
+function useLocalStorage(key, initialValue) {
+  const [value, setValue] = useState(() => {
+    const storedValue = localStorage.getItem(key);
+    return storedValue ? JSON.parse(storedValue) : initialValue;
+  });
+
+  useEffect(() => {
+    localStorage.setItem(key, JSON.stringify(value));
+  }, [key, value]);
+
+  return [value, setValue];
+}
+✅ Beneficio: Se puede usar en varios componentes sin repetir el localStorage logic.
+
+jsx
+Copy
+Edit
+const [theme, setTheme] = useLocalStorage("theme", "light");
+🔹 3. Cuando trabajas con eventos del navegador o suscripciones
+Si un componente necesita agregar y remover event listeners o suscripciones al montar y desmontar, encapsular esa lógica en un Custom Hook evita que se olvide limpiarlos.
+
+🔹 Ejemplo: useWindowSize para detectar cambios en el tamaño de la ventana.
+
+jsx
+Copy
+Edit
+function useWindowSize() {
+  const [size, setSize] = useState({
+    width: window.innerWidth,
+    height: window.innerHeight,
+  });
+
+  useEffect(() => {
+    const handleResize = () => {
+      setSize({
+        width: window.innerWidth,
+        height: window.innerHeight,
+      });
+    };
+
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
+
+  return size;
+}
+✅ Beneficio: Se puede usar en cualquier componente sin repetir la lógica.
+
+jsx
+Copy
+Edit
+const { width, height } = useWindowSize();
+🔹 4. Cuando necesitas desacoplar lógica de negocio de los componentes
+Si la lógica del negocio está muy unida al componente, un Custom Hook puede separar la funcionalidad y hacer que el código sea más fácil de probar y escalar.
+
+🔹 Ejemplo: useAuth para manejar la autenticación del usuario.
+
+jsx
+Copy
+Edit
+function useAuth() {
+  const [user, setUser] = useState(null);
+
+  useEffect(() => {
+    const storedUser = localStorage.getItem("user");
+    if (storedUser) setUser(JSON.parse(storedUser));
+  }, []);
+
+  const login = (userData) => {
+    setUser(userData);
+    localStorage.setItem("user", JSON.stringify(userData));
+  };
+
+  const logout = () => {
+    setUser(null);
+    localStorage.removeItem("user");
+  };
+
+  return { user, login, logout };
+}
+✅ Beneficio: Se puede usar en cualquier parte de la aplicación sin escribir la lógica repetitivamente.
+
+jsx
+Copy
+Edit
+const { user, login, logout } = useAuth();
+🎯 Cuándo NO usar Custom Hooks
+❌ Si la lógica solo se usa en un solo componente: Si el código no se repite en otros componentes, no es necesario extraerlo en un hook.
+❌ Si el hook solo devuelve un valor sin lógica de estado o efectos: No es útil si solo encapsula una función sin manejar estado o efectos.
+❌ Si agrega más complejidad de la necesaria: Si el código es más simple en el componente, no lo encapsules en un hook innecesariamente.
+

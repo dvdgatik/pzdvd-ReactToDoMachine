@@ -6,23 +6,45 @@ import { TodoList } from './TodoList';
 import { TodoItem } from './TodoItem';
 import { CreateToDoButton } from './CreateToDoButton';
 
-function App() { 
-  const localStorageTodos = localStorage.getItem('TODOS_V1');
-  let parsedTodos;
+/*
+Un Custom Hook en React es una función de JavaScript que utiliza hooks de React (como useState, useEffect, useRef, etc.) para encapsular lógica reutilizable y compartirla entre componentes. Se crean siguiendo la convención de nomenclatura que comienza con "use", como useCustomHook.
 
-  if(!localStorageTodos) {
-    localStorage.setItem('TODOS_V1', JSON.stringify([]))
-     parsedTodos = []
+Developer experience
+
+📌 ¿Por qué usar Custom Hooks?
+Reutilización de código: Permite evitar duplicar lógica en varios componentes.
+Lógica desacoplada: Separa la lógica del estado y los efectos del componente, facilitando la organización del código.
+Facilita pruebas: Al encapsular la lógica, puedes probarla de manera independiente.
+
+¿Cuando vale la pena implementar los custom hooks?
+
+*/
+function useLocalStorage(itemName, initialItem) {
+  const localStorageItem = localStorage.getItem('TODOS_V1');
+
+  let parsedItem;
+  if(!localStorageItem) {
+    localStorage.setItem(itemName, JSON.stringify(initialItem))
+    parsedItem = initialItem
   } else {
-    parsedTodos = JSON.parse(localStorageTodos)
+    parsedItem = JSON.parse(localStorageItem)
   }
 
+  const [item, setItem] = useState(parsedItem)
+
+  const saveItem = (newItem) => {
+    localStorage.setItem(itemName, JSON.stringify(newItem))
+    setItem(newItem)
+  }
+
+  return [item, saveItem];
+}
+
+function App() { 
   const [searchValue, setSearchValue] =  useState('');
+  const [todos, saveTodos]= useLocalStorage('TODOS_V1', [])
 
-  const [todos, setTodos]= useState(parsedTodos || [])
-  console.log(searchValue)
-
-  const completedTodos = todos.filter(todo => !!todo.completed).length;
+  const completedTodos = todos.filter(todo => !!todo.completed).length || [];
   const totalTodos = todos.length;
 
   const searchedTodos = todos.filter(todo => {
@@ -31,11 +53,6 @@ function App() {
     return todoText.includes(searchValueText)
   })
 
-  const saveTodos = (newTodos) => {
-    localStorage.setItem('TODOS_V1', JSON.stringify(newTodos))
-    setTodos(newTodos)
-  }
-
   const handleCompleteTodo = (id, completed) => () => {
     const newTodos = [...todos]
     const todoIndex =  newTodos.findIndex(
@@ -43,9 +60,7 @@ function App() {
     );
 
     newTodos[todoIndex].completed = !completed
-    console.log(newTodos[todoIndex])
     saveTodos(newTodos)
-
   }
 
   const handleDeleteTodo = (id) => () => {
