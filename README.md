@@ -566,3 +566,7 @@ useEffect(() => {
 
 Los efectos no se ejecutan inmediatamente
 
+
+Definicion Simple de useEffect
+- Es un hook que nos permite ejecutar codigo arbitrario cuando el componente se monta en el dom y cada vez que cambian las dependencias que nosotros le definamos
+

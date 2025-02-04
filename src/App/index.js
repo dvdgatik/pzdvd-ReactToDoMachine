@@ -18,20 +18,15 @@ Facilita pruebas: Al encapsular la lógica, puedes probarla de manera independie
 
 function App() { 
   const [searchValue, setSearchValue] = useState('');
-  const [todos, saveTodos]= useLocalStorage('TODOS_V1', [])
+  const {
+    item: todos, 
+    saveItem: saveTodos,
+    isLoading,
+    error
+  }= useLocalStorage('TODOS_V1', [])
 
   const completedTodos = todos.filter(todo => !!todo.completed).length || [];
   const totalTodos = todos.length;
-  console.log('Log 1')
-
-  // React.useEffect(() => {
-  //   console.log('Looooooog 2')
-  // }, [])
-
-  React.useEffect(()=>{
-      console.log('Looooooog 2')
-  }, [totalTodos])
-  console.log('Log 3')
 
   const searchedTodos = todos.filter(todo => {
     const todoText = todo.text.toLowerCase()
@@ -56,7 +51,9 @@ function App() {
   }
 
   return (
-  <AppUI 
+  <AppUI
+    isLoading={isLoading}
+    hasError={error}
     completedTodos = {completedTodos}
     totalTodos = {totalTodos}
     searchValue = {searchValue}
