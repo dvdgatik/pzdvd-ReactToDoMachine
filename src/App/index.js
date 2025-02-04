@@ -1,10 +1,11 @@
 import logo from './platzi.webp';
 import React, {useState} from 'react';
-import { TodoCounter }  from './TodoCounter';
-import { TodoSearch } from './TodoSearch';
-import { TodoList } from './TodoList';
-import { TodoItem } from './TodoItem';
-import { CreateToDoButton } from './CreateToDoButton';
+import { TodoCounter }  from '../TodoCounter';
+import { TodoSearch } from '../TodoSearch';
+import { TodoList } from '../TodoList';
+import { TodoItem } from '../TodoItem';
+import { CreateToDoButton } from '../CreateToDoButton';
+import { useLocalStorage } from './useLocalStorage';
 
 /*
 Un Custom Hook en React es una función de JavaScript que utiliza hooks de React (como useState, useEffect, useRef, etc.) para encapsular lógica reutilizable y compartirla entre componentes. Se crean siguiendo la convención de nomenclatura que comienza con "use", como useCustomHook.
@@ -19,29 +20,9 @@ Facilita pruebas: Al encapsular la lógica, puedes probarla de manera independie
 ¿Cuando vale la pena implementar los custom hooks?
 
 */
-function useLocalStorage(itemName, initialItem) {
-  const localStorageItem = localStorage.getItem('TODOS_V1');
-
-  let parsedItem;
-  if(!localStorageItem) {
-    localStorage.setItem(itemName, JSON.stringify(initialItem))
-    parsedItem = initialItem
-  } else {
-    parsedItem = JSON.parse(localStorageItem)
-  }
-
-  const [item, setItem] = useState(parsedItem)
-
-  const saveItem = (newItem) => {
-    localStorage.setItem(itemName, JSON.stringify(newItem))
-    setItem(newItem)
-  }
-
-  return [item, saveItem];
-}
 
 function App() { 
-  const [searchValue, setSearchValue] =  useState('');
+  const [searchValue, setSearchValue] = useState('');
   const [todos, saveTodos]= useLocalStorage('TODOS_V1', [])
 
   const completedTodos = todos.filter(todo => !!todo.completed).length || [];
