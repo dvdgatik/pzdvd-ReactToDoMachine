@@ -462,3 +462,107 @@ Si tu proyecto es pequeño, manténlo simple. Si crece, usa una estructura modul
 Oranizacion separando UI y logica de react
 App.js
 AppUI.js
+
+
+- Hay momentos en que partes de la logica de react pueden demorarse, consultas en API o procesos que son asincronos
+
+- useEffect se utiliza para manejar efectos secundarios (Side Effects) en los componentes funcionales de React. Un efecto secundario es cualquier operación que afecte algo fuera del ámbito del componente (como llamadas a APIs, suscripciones, manipulación del DOM, etc.).
+
+
+
+
+
+
+useEffect se utiliza para manejar efectos secundarios en los componentes funcionales de React. Un efecto secundario es cualquier operación que afecte algo fuera del ámbito del componente (como llamadas a APIs, suscripciones, manipulación del DOM, etc.).
+
+🔥 Casos principales de uso de useEffect
+1️⃣ Cuando necesitas ejecutar código al montar el componente (Simulación de componentDidMount)
+📌 Se usa cuando quieres que un efecto se ejecute solo una vez, como una llamada a una API al cargar un componente.
+
+jsx
+Copy
+Edit
+useEffect(() => {
+  console.log("El componente se montó");
+}, []); // 👈 Dependencias vacías significa que solo se ejecuta al montar
+2️⃣ Cuando necesitas ejecutar código al actualizarse una variable específica (Simulación de componentDidUpdate)
+📌 Se usa para reaccionar a cambios en una variable y ejecutar un efecto cuando esta cambia.
+
+jsx
+Copy
+Edit
+const [count, setCount] = useState(0);
+
+useEffect(() => {
+  console.log(`El contador cambió a: ${count}`);
+}, [count]); // 👈 Se ejecuta cada vez que `count` cambia
+3️⃣ Cuando necesitas ejecutar código al desmontar el componente (Cleanup - Simulación de componentWillUnmount)
+📌 Se usa para limpiar efectos secundarios, como cerrar suscripciones o limpiar temporizadores.
+
+jsx
+Copy
+Edit
+useEffect(() => {
+  const interval = setInterval(() => {
+    console.log("Ejecutando intervalo...");
+  }, 1000);
+
+  return () => {
+    console.log("El componente se desmontó");
+    clearInterval(interval); // 👈 Limpieza del efecto
+  };
+}, []);
+🚀 Otros casos importantes de uso
+✅ Llamadas a APIs
+jsx
+Copy
+Edit
+useEffect(() => {
+  fetch("https://jsonplaceholder.typicode.com/posts")
+    .then(response => response.json())
+    .then(data => console.log(data));
+}, []);
+✅ Manejo de eventos globales
+jsx
+Copy
+Edit
+useEffect(() => {
+  const handleResize = () => console.log("Cambiando tamaño de ventana");
+
+  window.addEventListener("resize", handleResize);
+
+  return () => window.removeEventListener("resize", handleResize); // Limpieza
+}, []);
+✅ Sincronizar con el almacenamiento local (localStorage)
+jsx
+Copy
+Edit
+const [theme, setTheme] = useState(localStorage.getItem("theme") || "light");
+
+useEffect(() => {
+  localStorage.setItem("theme", theme);
+}, [theme]); // Se ejecuta cuando `theme` cambia
+⚠️ Errores comunes al usar useEffect
+❌ Olvidar limpiar efectos secundarios
+Si estás usando setInterval, setTimeout o agregando eventos a window, debes limpiarlos en el return.
+
+❌ Ejecutar useEffect innecesariamente
+Si no colocas un array de dependencias [], el efecto se ejecutará en cada render y podría generar problemas de rendimiento.
+
+❌ Modificar el estado directamente dentro del useEffect sin control
+jsx
+Copy
+Edit
+useEffect(() => {
+  setCount(count + 1); // ❌ Esto puede causar un bucle infinito
+}, [count]);
+🔹 Solución: Asegúrate de que no estás cambiando el estado sin condición.
+
+💡 Conclusión
+📌 Usa useEffect cuando necesites manejar efectos secundarios en React, como llamadas a APIs, eventos globales o sincronización con almacenamiento local.
+📌 Siempre recuerda limpiar efectos secundarios cuando sea necesario para evitar fugas de memoria.
+📌 Utiliza el array de dependencias para controlar cuándo se ejecuta el efecto y evitar renders innecesarios.
+
+
+Los efectos no se ejecutan inmediatamente
+
