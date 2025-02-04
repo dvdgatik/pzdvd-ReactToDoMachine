@@ -459,4 +459,6 @@ Si tu proyecto es pequeño, manténlo simple. Si crece, usa una estructura modul
 
 
 
-
+Oranizacion separando UI y logica de react
+App.js
+AppUI.js
