@@ -1,6 +1,26 @@
 import React, { useState } from "react";
 import { useLocalStorage } from "./useLocalStorage";
 
+// const defaultTodos = [
+//   {
+//     id: 1,
+//     text: "Completar curso React",
+//     completed: false,
+//   },
+//   {
+//     id: 2,
+//     text: "Completar curso Node",
+//     completed: false,
+//   },
+//   {
+//     id: 3,
+//     text: "Completar curso Python",
+//     completed: false,
+//   },
+// ];
+
+// localStorage.setItem("TODOS_V1", JSON.stringify(defaultTodos));
+
 const TodoContext = React.createContext();
 
 const TodoProvider = ({ children }) => {
@@ -13,7 +33,7 @@ const TodoProvider = ({ children }) => {
     error,
   } = useLocalStorage("TODOS_V1", []);
 
-  const completedTodos = todos.filter((todo) => !!todo.completed).length || [];
+  const completedTodos = todos.filter((todo) => !!todo.completed).length || 0;
   const totalTodos = todos.length;
 
   const searchedTodos = todos.filter((todo) => {
