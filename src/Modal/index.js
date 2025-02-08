@@ -1,9 +1,10 @@
 import React from "react";
 import ReactDOM, { createPortal } from "react-dom";
+import "./Modal.css";
 
 export const Modal = ({ children }) => {
-  return createPortal(
-    <div className="Modal">{children}</div>,
+  return ReactDOM.createPortal(
+    <div className="ModalBackground">{children}</div>,
     document.getElementById("modal")
   );
 };
