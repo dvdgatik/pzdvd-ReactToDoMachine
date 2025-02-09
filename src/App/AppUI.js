@@ -8,6 +8,7 @@ import { TodosLoading } from "../TodosLoading";
 import { EmptyTodos } from "./TodosEmpty";
 import { TodoConsumer } from "../TodoContext";
 import { Modal } from "../Modal";
+import { TodoForm } from "./TodoForm";
 
 function AppUI() {
   return (
@@ -56,7 +57,11 @@ function AppUI() {
                 ))}
             </TodoList>
             <CreateToDoButton setOpenModal={setOpenModal} />
-            {openModal && <Modal>FUncionalidad crear todos</Modal>}
+            {openModal && (
+              <Modal>
+                <TodoForm />
+              </Modal>
+            )}
           </>
         )}
       </TodoConsumer>
