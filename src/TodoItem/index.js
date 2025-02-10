@@ -6,7 +6,8 @@ function TodoItem({ id, text, completed, onComplete, onDelete }) {
     <li key={id} className="TodoItem">
       <CompleteIcon completed={completed} onComplete={onComplete} />
       <p className={`TodoItem-p ${completed && "TodoItem-p--complete"}`}>
-        {`${id}`} {text}
+        {/*{`${id}`} {text}*/}
+        {text}
       </p>
       <DeleteIcon onDelete={onDelete} />
     </li>

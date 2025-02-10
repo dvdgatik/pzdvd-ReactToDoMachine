@@ -43,6 +43,16 @@ const TodoProvider = ({ children }) => {
     return todoText.includes(searchValueText);
   });
 
+  const addTodo = (text) => {
+    const newTodos = [...todos];
+    newTodos.push({
+      id: crypto.randomUUID(),
+      text,
+      completed: false,
+    });
+    saveTodos(newTodos);
+  };
+
   const handleCompleteTodo = (id, completed) => () => {
     const newTodos = [...todos];
     const todoIndex = newTodos.findIndex((todo) => todo.id == id);
@@ -71,6 +81,7 @@ const TodoProvider = ({ children }) => {
         handleDeleteTodo,
         openModal,
         setOpenModal,
+        addTodo,
       }}
     >
       {children}
