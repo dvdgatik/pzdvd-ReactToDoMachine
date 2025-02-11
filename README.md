@@ -74,17 +74,18 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/d
 
 This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
 
-
 ## Introduccion a React (Fundamentos)
 
 React.js es una de las herramientas/library mas populares en JavaScript
+
 - Nos ayuda a crear aplicaciones interactivas
   - Multiplataforma
   - Declarativo
     - React te ayuda a crear interfaces de usuario interactivas de forma sencilla. Diseña vistas simples para cada estado en tu aplicación, y React se encargará de actualizar y renderizar de manera eficiente los componentes correctos cuando los datos cambien.
 
 Las vistas declarativas hacen que tu código sea más predecible, por lo tanto, fácil de depurar.
-  - Basado en componentes
+
+- Basado en componentes
 
 Crea componentes encapsulados que manejen su propio estado, y conviértelos en interfaces de usuario complejas.
 
@@ -92,29 +93,27 @@ Ya que la lógica de los componentes está escrita en JavaScript y no en plantil
 
 -Fue constriuida con Create React App
 
-
 ¿que es un componente?
-- reutilizable e interacrtivo
 
+- reutilizable e interacrtivo
 
 build, crea una version del proyecto que se pueda desplegar a produccion
 
 eslint (variables no utilizadas)
- browserList a que version de EC debe transpilar el proyecto
+browserList a que version de EC debe transpilar el proyecto
 
- robots.txt, solo para saber a que se le puede hacer web scrapping
+robots.txt, solo para saber a que se le puede hacer web scrapping
 
 src index.js
-  Importamos react 
-  Importamos ReactDOM
-    usamos createRoot(elemento donde se renderizará la aplicacion usando getElementByID)
-  usamos el metodo render(el componente que renderizaremos en este caso App sera el componente inicial)
-  
+Importamos react
+Importamos ReactDOM
+usamos createRoot(elemento donde se renderizará la aplicacion usando getElementByID)
+usamos el metodo render(el componente que renderizaremos en este caso App sera el componente inicial)
 
-
-  - Como se pueden comunicar estados entre componentes padres y compoentes hijos
-  - Como podemos crear estados derivados para crear nuevos calculos a partir de nuestros primeros estados
+- Como se pueden comunicar estados entre componentes padres y compoentes hijos
+- Como podemos crear estados derivados para crear nuevos calculos a partir de nuestros primeros estados
 - ¿Como se comparten los estados de un componente hijo a un padre?
+
   - Solo se pueden compartir estados de padres a hijos no al reves
 
 - Localstorage es una herramienta que nos ayuda a hacer persistencia en el navegador
@@ -123,14 +122,13 @@ src index.js
 - podemos usar JSON.stringify para convertir un objeto, array etc en un string
 - Para convertir un string en objeto usamos JSON.parse
 
-
 - Nuestor codigo se volvio mas complejo en logica añadiendo muchas lineas de codigo en App por el manejo del local stora estado etc
 - Podemos usar una herramienta llamada custom hooks que nos permite abstraer logica de nuestros componentes y reutilizarla
 - crearemos un customHook para local storage
 
-
 ¿Cuando vale la pena implementar los custom hooks?
-- En realidad no hay una guia escrita en piedra pero 
+
+- En realidad no hay una guia escrita en piedra pero
 
 - Cuando el componente tenga muchas responsabilidades
 
@@ -141,18 +139,8 @@ Permite: compartir logica entre componentes y tener el codigo del componente com
 Al abstraer usando Hooks nos facilita la lectura del codigo, teniendo las partes que le competen al componente en una seccion y las partes de la funcionalidad del hook en otra diferente.
 Cuando vale la pena implementarlo? Bajo nuestro criterio cuando veamos necesario abstraer una logica.
 
-
-
-
-
 🔹 1. Cuando necesitas manejar estado dentro de un componente funcional
 Si tu componente necesita recordar valores entre renders (como un contador, un formulario o un toggle
-
-
-
-
-
-
 
 You said:
 cuando vale la pena utilizar custom hooks?
@@ -173,25 +161,25 @@ Edit
 import { useState, useEffect } from "react";
 
 function useFetch(url) {
-  const [data, setData] = useState(null);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(null);
+const [data, setData] = useState(null);
+const [loading, setLoading] = useState(true);
+const [error, setError] = useState(null);
 
-  useEffect(() => {
-    setLoading(true);
-    fetch(url)
-      .then((response) => response.json())
-      .then((data) => {
-        setData(data);
-        setLoading(false);
-      })
-      .catch((error) => {
-        setError(error);
-        setLoading(false);
-      });
-  }, [url]);
+useEffect(() => {
+setLoading(true);
+fetch(url)
+.then((response) => response.json())
+.then((data) => {
+setData(data);
+setLoading(false);
+})
+.catch((error) => {
+setError(error);
+setLoading(false);
+});
+}, [url]);
 
-  return { data, loading, error };
+return { data, loading, error };
 }
 ✅ Beneficio: Se puede usar en cualquier componente sin repetir la lógica de fetch.
 
@@ -208,16 +196,16 @@ jsx
 Copy
 Edit
 function useLocalStorage(key, initialValue) {
-  const [value, setValue] = useState(() => {
-    const storedValue = localStorage.getItem(key);
-    return storedValue ? JSON.parse(storedValue) : initialValue;
-  });
+const [value, setValue] = useState(() => {
+const storedValue = localStorage.getItem(key);
+return storedValue ? JSON.parse(storedValue) : initialValue;
+});
 
-  useEffect(() => {
-    localStorage.setItem(key, JSON.stringify(value));
-  }, [key, value]);
+useEffect(() => {
+localStorage.setItem(key, JSON.stringify(value));
+}, [key, value]);
 
-  return [value, setValue];
+return [value, setValue];
 }
 ✅ Beneficio: Se puede usar en varios componentes sin repetir el localStorage logic.
 
@@ -234,24 +222,25 @@ jsx
 Copy
 Edit
 function useWindowSize() {
-  const [size, setSize] = useState({
-    width: window.innerWidth,
-    height: window.innerHeight,
-  });
+const [size, setSize] = useState({
+width: window.innerWidth,
+height: window.innerHeight,
+});
 
-  useEffect(() => {
-    const handleResize = () => {
-      setSize({
-        width: window.innerWidth,
-        height: window.innerHeight,
-      });
-    };
+useEffect(() => {
+const handleResize = () => {
+setSize({
+width: window.innerWidth,
+height: window.innerHeight,
+});
+};
 
     window.addEventListener("resize", handleResize);
     return () => window.removeEventListener("resize", handleResize);
-  }, []);
 
-  return size;
+}, []);
+
+return size;
 }
 ✅ Beneficio: Se puede usar en cualquier componente sin repetir la lógica.
 
@@ -268,24 +257,24 @@ jsx
 Copy
 Edit
 function useAuth() {
-  const [user, setUser] = useState(null);
+const [user, setUser] = useState(null);
 
-  useEffect(() => {
-    const storedUser = localStorage.getItem("user");
-    if (storedUser) setUser(JSON.parse(storedUser));
-  }, []);
+useEffect(() => {
+const storedUser = localStorage.getItem("user");
+if (storedUser) setUser(JSON.parse(storedUser));
+}, []);
 
-  const login = (userData) => {
-    setUser(userData);
-    localStorage.setItem("user", JSON.stringify(userData));
-  };
+const login = (userData) => {
+setUser(userData);
+localStorage.setItem("user", JSON.stringify(userData));
+};
 
-  const logout = () => {
-    setUser(null);
-    localStorage.removeItem("user");
-  };
+const logout = () => {
+setUser(null);
+localStorage.removeItem("user");
+};
 
-  return { user, login, logout };
+return { user, login, logout };
 }
 ✅ Beneficio: Se puede usar en cualquier parte de la aplicación sin escribir la lógica repetitivamente.
 
@@ -304,7 +293,6 @@ const { user, login, logout } = useAuth();
 - Feature based: agrupa componentes por funcionalidades
 - Atomic Design: Este enfoque se basa en la metodología Atomic Design de Brad Frost y separa componentes en cinco niveles
 - ⚛️ Atomic Design + Feature-Based
-  
 
 📌 Formas de organizar componentes en carpetas en React
 La organización de archivos en React depende del tamaño del proyecto, la complejidad y las preferencias del equipo. Aquí te muestro varias estructuras populares con sus ventajas y desventajas.
@@ -316,11 +304,11 @@ css
 Copy
 Edit
 /src
- ├── components/
- │   ├── Button.jsx
- │   ├── Navbar.jsx
- │   ├── Card.jsx
- │   ├── Footer.jsx
+├── components/
+│ ├── Button.jsx
+│ ├── Navbar.jsx
+│ ├── Card.jsx
+│ ├── Footer.jsx
 ✅ Ventajas:
 
 Fácil de entender en proyectos pequeños.
@@ -336,18 +324,18 @@ bash
 Copy
 Edit
 /src
- ├── components/
- │   ├── common/       # Componentes reutilizables
- │   │   ├── Button.jsx
- │   │   ├── Card.jsx
- │   │   ├── Modal.jsx
- │   ├── layout/       # Componentes estructurales
- │   │   ├── Navbar.jsx
- │   │   ├── Sidebar.jsx
- │   │   ├── Footer.jsx
- │   ├── pages/        # Componentes específicos de páginas
- │   │   ├── Home.jsx
- │   │   ├── Dashboard.jsx
+├── components/
+│ ├── common/ # Componentes reutilizables
+│ │ ├── Button.jsx
+│ │ ├── Card.jsx
+│ │ ├── Modal.jsx
+│ ├── layout/ # Componentes estructurales
+│ │ ├── Navbar.jsx
+│ │ ├── Sidebar.jsx
+│ │ ├── Footer.jsx
+│ ├── pages/ # Componentes específicos de páginas
+│ │ ├── Home.jsx
+│ │ ├── Dashboard.jsx
 ✅ Ventajas:
 
 Más organizada que la estructura básica.
@@ -362,18 +350,18 @@ bash
 Copy
 Edit
 /src
- ├── features/
- │   ├── auth/          # Funcionalidad de autenticación
- │   │   ├── Login.jsx
- │   │   ├── Register.jsx
- │   │   ├── authService.js
- │   ├── products/      # Funcionalidad de productos
- │   │   ├── ProductList.jsx
- │   │   ├── ProductDetail.jsx
- │   │   ├── productService.js
- │   ├── cart/         # Funcionalidad del carrito
- │   │   ├── Cart.jsx
- │   │   ├── cartService.js
+├── features/
+│ ├── auth/ # Funcionalidad de autenticación
+│ │ ├── Login.jsx
+│ │ ├── Register.jsx
+│ │ ├── authService.js
+│ ├── products/ # Funcionalidad de productos
+│ │ ├── ProductList.jsx
+│ │ ├── ProductDetail.jsx
+│ │ ├── productService.js
+│ ├── cart/ # Funcionalidad del carrito
+│ │ ├── Cart.jsx
+│ │ ├── cartService.js
 ✅ Ventajas:
 
 Facilita el mantenimiento y escalabilidad.
@@ -388,21 +376,21 @@ bash
 Copy
 Edit
 /src
- ├── components/
- │   ├── atoms/       # Componentes más pequeños (botones, inputs, labels)
- │   │   ├── Button.jsx
- │   │   ├── Input.jsx
- │   ├── molecules/    # Combinación de átomos (formularios, tarjetas)
- │   │   ├── SearchBar.jsx
- │   │   ├── Card.jsx
- │   ├── organisms/    # Secciones completas (Navbar, Footer)
- │   │   ├── Navbar.jsx
- │   │   ├── Sidebar.jsx
- │   ├── templates/    # Estructuras de páginas con placeholders
- │   │   ├── DashboardTemplate.jsx
- │   ├── pages/        # Páginas finales
- │   │   ├── Home.jsx
- │   │   ├── Profile.jsx
+├── components/
+│ ├── atoms/ # Componentes más pequeños (botones, inputs, labels)
+│ │ ├── Button.jsx
+│ │ ├── Input.jsx
+│ ├── molecules/ # Combinación de átomos (formularios, tarjetas)
+│ │ ├── SearchBar.jsx
+│ │ ├── Card.jsx
+│ ├── organisms/ # Secciones completas (Navbar, Footer)
+│ │ ├── Navbar.jsx
+│ │ ├── Sidebar.jsx
+│ ├── templates/ # Estructuras de páginas con placeholders
+│ │ ├── DashboardTemplate.jsx
+│ ├── pages/ # Páginas finales
+│ │ ├── Home.jsx
+│ │ ├── Profile.jsx
 ✅ Ventajas:
 
 Extremadamente escalable y modular.
@@ -418,27 +406,27 @@ graphql
 Copy
 Edit
 /src
- ├── components/        # Componentes reutilizables (Botones, Modales, Inputs)
- │   ├── Button.jsx
- │   ├── Modal.jsx
- │   ├── Input.jsx
- ├── features/         # Agrupa módulos específicos
- │   ├── auth/
- │   │   ├── Login.jsx
- │   │   ├── Register.jsx
- │   │   ├── authService.js
- │   ├── dashboard/
- │   │   ├── Dashboard.jsx
- │   │   ├── DashboardCard.jsx
- ├── hooks/            # Custom Hooks
- │   ├── useFetch.js
- │   ├── useAuth.js
- ├── pages/            # Páginas de la aplicación
- │   ├── Home.jsx
- │   ├── Profile.jsx
- ├── services/         # Llamadas a API y lógica externa
- │   ├── api.js
- │   ├── authService.js
+├── components/ # Componentes reutilizables (Botones, Modales, Inputs)
+│ ├── Button.jsx
+│ ├── Modal.jsx
+│ ├── Input.jsx
+├── features/ # Agrupa módulos específicos
+│ ├── auth/
+│ │ ├── Login.jsx
+│ │ ├── Register.jsx
+│ │ ├── authService.js
+│ ├── dashboard/
+│ │ ├── Dashboard.jsx
+│ │ ├── DashboardCard.jsx
+├── hooks/ # Custom Hooks
+│ ├── useFetch.js
+│ ├── useAuth.js
+├── pages/ # Páginas de la aplicación
+│ ├── Home.jsx
+│ ├── Profile.jsx
+├── services/ # Llamadas a API y lógica externa
+│ ├── api.js
+│ ├── authService.js
 ✅ Ventajas:
 
 Escalable y organizada.
@@ -448,30 +436,22 @@ Mezcla lo mejor de varias metodologías.
 
 Puede ser demasiado estructurada para proyectos pequeños.
 🎯 ¿Cuál estructura usar?
-Tamaño del proyecto	Recomendación
-🔹 Pequeño (Landing page, demo)	📂 Flat Structure o por tipo
-🔸 Mediano (Dashboard, app con autenticación)	🏢 Feature-Based
-🔥 Grande (E-commerce, SaaS, ERP)	⚛️ Atomic Design + Feature-Based
+Tamaño del proyecto Recomendación
+🔹 Pequeño (Landing page, demo) 📂 Flat Structure o por tipo
+🔸 Mediano (Dashboard, app con autenticación) 🏢 Feature-Based
+🔥 Grande (E-commerce, SaaS, ERP) ⚛️ Atomic Design + Feature-Based
 🚀 Conclusión
 Si tu proyecto es pequeño, manténlo simple. Si crece, usa una estructura modular y escalable. Feature-Based y Atomic Design son las más recomendadas para proyectos grandes.
 
 📌 ¿Cómo organizas tú tus proyectos en React? 🚀
 
-
-
 Oranizacion separando UI y logica de react
 App.js
 AppUI.js
 
-
 - Hay momentos en que partes de la logica de react pueden demorarse, consultas en API o procesos que son asincronos
 
 - useEffect se utiliza para manejar efectos secundarios (Side Effects) en los componentes funcionales de React. Un efecto secundario es cualquier operación que afecte algo fuera del ámbito del componente (como llamadas a APIs, suscripciones, manipulación del DOM, etc.).
-
-
-
-
-
 
 useEffect se utiliza para manejar efectos secundarios en los componentes funcionales de React. Un efecto secundario es cualquier operación que afecte algo fuera del ámbito del componente (como llamadas a APIs, suscripciones, manipulación del DOM, etc.).
 
@@ -483,7 +463,7 @@ jsx
 Copy
 Edit
 useEffect(() => {
-  console.log("El componente se montó");
+console.log("El componente se montó");
 }, []); // 👈 Dependencias vacías significa que solo se ejecuta al montar
 2️⃣ Cuando necesitas ejecutar código al actualizarse una variable específica (Simulación de componentDidUpdate)
 📌 Se usa para reaccionar a cambios en una variable y ejecutar un efecto cuando esta cambia.
@@ -494,7 +474,7 @@ Edit
 const [count, setCount] = useState(0);
 
 useEffect(() => {
-  console.log(`El contador cambió a: ${count}`);
+console.log(`El contador cambió a: ${count}`);
 }, [count]); // 👈 Se ejecuta cada vez que `count` cambia
 3️⃣ Cuando necesitas ejecutar código al desmontar el componente (Cleanup - Simulación de componentWillUnmount)
 📌 Se usa para limpiar efectos secundarios, como cerrar suscripciones o limpiar temporizadores.
@@ -503,14 +483,14 @@ jsx
 Copy
 Edit
 useEffect(() => {
-  const interval = setInterval(() => {
-    console.log("Ejecutando intervalo...");
-  }, 1000);
+const interval = setInterval(() => {
+console.log("Ejecutando intervalo...");
+}, 1000);
 
-  return () => {
-    console.log("El componente se desmontó");
-    clearInterval(interval); // 👈 Limpieza del efecto
-  };
+return () => {
+console.log("El componente se desmontó");
+clearInterval(interval); // 👈 Limpieza del efecto
+};
 }, []);
 🚀 Otros casos importantes de uso
 ✅ Llamadas a APIs
@@ -518,20 +498,20 @@ jsx
 Copy
 Edit
 useEffect(() => {
-  fetch("https://jsonplaceholder.typicode.com/posts")
-    .then(response => response.json())
-    .then(data => console.log(data));
+fetch("https://jsonplaceholder.typicode.com/posts")
+.then(response => response.json())
+.then(data => console.log(data));
 }, []);
 ✅ Manejo de eventos globales
 jsx
 Copy
 Edit
 useEffect(() => {
-  const handleResize = () => console.log("Cambiando tamaño de ventana");
+const handleResize = () => console.log("Cambiando tamaño de ventana");
 
-  window.addEventListener("resize", handleResize);
+window.addEventListener("resize", handleResize);
 
-  return () => window.removeEventListener("resize", handleResize); // Limpieza
+return () => window.removeEventListener("resize", handleResize); // Limpieza
 }, []);
 ✅ Sincronizar con el almacenamiento local (localStorage)
 jsx
@@ -540,7 +520,7 @@ Edit
 const [theme, setTheme] = useState(localStorage.getItem("theme") || "light");
 
 useEffect(() => {
-  localStorage.setItem("theme", theme);
+localStorage.setItem("theme", theme);
 }, [theme]); // Se ejecuta cuando `theme` cambia
 ⚠️ Errores comunes al usar useEffect
 ❌ Olvidar limpiar efectos secundarios
@@ -554,7 +534,7 @@ jsx
 Copy
 Edit
 useEffect(() => {
-  setCount(count + 1); // ❌ Esto puede causar un bucle infinito
+setCount(count + 1); // ❌ Esto puede causar un bucle infinito
 }, [count]);
 🔹 Solución: Asegúrate de que no estás cambiando el estado sin condición.
 
@@ -563,10 +543,39 @@ useEffect(() => {
 📌 Siempre recuerda limpiar efectos secundarios cuando sea necesario para evitar fugas de memoria.
 📌 Utiliza el array de dependencias para controlar cuándo se ejecuta el efecto y evitar renders innecesarios.
 
-
 Los efectos no se ejecutan inmediatamente
 
-
 Definicion Simple de useEffect
+
 - Es un hook que nos permite ejecutar codigo arbitrario cuando el componente se monta en el dom y cada vez que cambian las dependencias que nosotros le definamos
 
+Desplegar Todo Machine con Github Pages
+
+npm run build
+
+- Crea una version para produccion de la aplicacion bundle, es decir ya no necesitaremos un servidor de node
+  sino que generara archivos estaticos html css, js imagenes
+
+- Todo eso lo genera en una carpeta que se llame build
+- El archivo .gitignore, ignora la carpeta build
+
+"homepage": "/Users/davidgatica/Documents/Projects/Personal/pzdvd-ReactToDoMachine/build/"
+"homepage": "https://dvdgatik.github.io/pzdvd-ReactToDoMachine"
+
+npm i --save-dev gh-pages
+
+Deplegar apuntando el deploy de index.html a la carpeta de build
+"deploy": "gh-pages -d build"
+
+maualmente solo tendriamos que pasar la carpeta build a la rama gh-pages
+
+corremos el build antes del deploy en caso de que la carpeta build aun no exista
+"preDeploy": "npm run build",
+"deploy": "gh-pages -d build"
+
+correr npm run deploy
+
+> platzi-intro-react-base@0.1.0 deploy
+> gh-pages -d build
+
+Published
