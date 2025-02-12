@@ -579,3 +579,37 @@ correr npm run deploy
 > gh-pages -d build
 
 Published
+
+### Portafolio Profesional
+
+¿Cuál es la clave para un portafolio profesional exitoso?
+La presentación es la línea que separa un portafolio estándar de uno que realmente impresiona. No basta solo con dominar los hooks de React o tener múltiples proyectos realizados. Comunicar bien tus logros es fundamental para alcanzar metas profesionales, ya sea conseguir empleo, un aumento o una posición de liderazgo. Los estudiantes destacados de Platzi no solo aprenden React.js, sino que también mejoran su repositorio para convertirlo en una carta de presentación convincente, una herramienta esencial para captar la atención de reclutadores, managers o futuros socios.
+
+¿Cómo optimizamos un portafolio profesional?
+Analizar la estructura de los branches:
+
+Identifica qué ramas son las más relevantes.
+La rama principal podría ser main, pero ¿es la mejor opción para mostrar tu proyecto? Analiza y elige la más adecuada en los settings de GitHub.
+Historial de commits:
+
+Asegúrate de tener un historial de commits descriptivo y coherente.
+Facilita ver la evolución de tu aplicación de manera clara y organizada.
+Mejorar el archivo README:
+
+Dedica los primeros párrafos a explicar claramente qué esperar de tu proyecto.
+Adjunta enlaces útiles como el deploy de la aplicación, la URL y cualquier otra información relevante.
+¿Qué más puedo incluir en mi repositorio?
+Incluir el diseño y prototipos:
+
+Comparte el archivo Figma o su prototipo, si lo tienes.
+Capturas de pantalla o una URL al deploy pueden complementar la documentación.
+Destacar tu perfil personal y profesional:
+
+Utiliza la foto en tu perfil que mejor te represente.
+Añade repositorios destacados que quieras presumir en tu perfil de GitHub.
+Considera un curso sobre marca personal para developers y mejora cómo comunicas tus habilidades.
+¿Qué otros consejos son útiles?
+Cuida tus commits y README: Estos son aspectos que evaluadores revisarán; asegúrate de que sean claros y bien redactados.
+Sé consistente: Usa términos e instrucciones consistentes para que tu repositorio se mantenga accesible y profesional.
+Sé valiente y creativo: Agrega detalles que te diferencien, pero manteniéndolos relevantes y útiles.
+Optimizar tanto tu perfil de GitHub como los repositorios de tus proyectos fortalece tu marca personal. Al mejorar estos aspectos, no solo refuerzas tus habilidades técnicas aprendidas, sino que también te preparas mejor para comunicar y proyectar tus habilidades de manera efectiva a nivel profesional.
