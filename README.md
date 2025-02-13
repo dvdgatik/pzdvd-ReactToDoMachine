@@ -659,3 +659,8 @@ la interaccion de los usuarios
 lo que sea necesario para conseguir la mejor experiencia para el usuario
 
 en lugar de nuevas tendencias y tecnologias que aun no sean estables o no tengan una necesidad relevante en el proyecto
+
+en la version 16 no existian los hooks
+sino componentes clases que heredaban de react component
+habia un ciclo de vida
+y de alguna manera se programaba en react con POO
