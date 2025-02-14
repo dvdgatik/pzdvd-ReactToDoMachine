@@ -664,3 +664,56 @@ en la version 16 no existian los hooks
 sino componentes clases que heredaban de react component
 habia un ciclo de vida
 y de alguna manera se programaba en react con POO
+
+¿Cuando necesitas realmente React?
+Primero hay que pensar que proyectos vamos a construir:
+Por ejemplo
+
+La app de TODO machine es muy interactiva
+Todo el tiempo depende de la interaccion (eventos) del usuario
+
+Pero puede haber proyectos donde no haya tanta interaccion del usuario
+que no sea una aplicacion web sino una pagina web
+
+como una landing, los productos no cambian, no se pueden comprar
+
+React no esta pensado para paginas estaticas o que no tienen mucha interaccion
+
+Entonces hay que pensar en el modelo de MVPs
+¿Que pasa si la aplicacion seguira creciendo en el futuro?
+
+Que es React JS
+libreria?
+framework?
+arquitectura?
+
+Si bien ReactJs por si solo es una libreria
+
+pero mas bien empieza siendo una libreria
+
+React podria decirse que es una libreria con frameworks prograsios que puede implementar como Next.js, Gasby, Remix
+
+y de hecho React.js tambien es una arquitectura
+
+¿Cuándo vale la pena utilizar React JS?
+Tomar la decisión de cuándo utilizar React JS en tus proyectos es fundamental para garantizar no solo el éxito del desarrollo, sino también el aprovechamiento óptimo de esta poderosa herramienta. React JS es excepcional cuando se crean aplicaciones web interactivas, aquellas en las que la comunicación constante entre usuario y página es vital. Su capacidad para manejar eventos de usuario, estados, efectos y almacenamiento local lo hacen ideal para aplicaciones que están en constante evolución y crecimiento.
+
+Sin embargo, hay escenarios en los que su empleo no resulta ventajoso. En casos como la creación de páginas estáticas o de tipo "landing" donde la interacción con el usuario es mínima, React puede ser una carga innecesaria. Su poder radica en su potencial para desarrollar aplicaciones ricas en funciones interactivas y no solo para mostrar contenido estático.
+
+¿Qué es realmente React JS?
+A menudo, la pregunta sobre la verdadera naturaleza de React JS surge en medio de su implementación. La documentación oficial de React lo clasifica como una librería, pero en la práctica, va mucho más allá. React no es meramente un script importado; es un entorno completo de desarrollo que incluye transpilación, empaquetamiento, y más.
+
+Considerado por algunos como un "framework progresivo", React se integra profundamente en el desarrollo de proyectos que además de ser librerías, se convierten en arquitecturas. Esto implica que al optar por React, se deben tomar decisiones arquitectónicas significativas en el diseño del proyecto, lo que refuerza su rol más allá de una simple librería.
+
+¿Qué tipo de proyectos puedo crear con React JS?
+¡Las posibilidades con React JS son enormes! Desde tiendas en línea hasta aplicaciones de reservas de vuelos, React facilita la creación de aplicaciones complejas y escalables. Las herramientas del ecosistema de React, como Redux para el manejo del estado, permiten gestionar flujos de información de manera predecible y eficaz.
+
+Aquí algunas ideas de proyectos que puedes abordar con React:
+
+Tiendas online o comercios electrónicos: Construir plataformas de e-commerce dinámicas y personalizables.
+Aplicaciones de reservas: Crea sistemas de reservas de vuelos o eventos, con interfaces amigables y funciones interactivas.
+Clones de aplicaciones populares: Desafía tus habilidades recreando aplicaciones conocidas como Instagram, blogs o sitios de noticias.
+Sistemas de diseño y accesibilidad: Incorpora mejores prácticas de diseño accesible e integraciones avanzadas.
+La invitación está abierta a explorar las vastas posibilidades del universo React JS. Desde cursos adicionales dentro de itinerarios formativos hasta proyectos personales, el trayecto de aprendizaje es continuo. A medida que te sumerges en el mundo de React y sus numerosos ecosistemas de extensión como Next.js, alcanzarás un dominio que no solo enriquecerá tu carrera, sino que también te permitirá participar en proyectos cada vez más desafiantes e innovadores.
+
+No olvides que cada aplicación que desarrolles es una oportunidad para presumir tus habilidades y aprendizajes. ¡Sigue adelante, React Frontend Developer!
