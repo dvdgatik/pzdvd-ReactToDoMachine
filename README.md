@@ -717,3 +717,68 @@ Sistemas de diseño y accesibilidad: Incorpora mejores prácticas de diseño acc
 La invitación está abierta a explorar las vastas posibilidades del universo React JS. Desde cursos adicionales dentro de itinerarios formativos hasta proyectos personales, el trayecto de aprendizaje es continuo. A medida que te sumerges en el mundo de React y sus numerosos ecosistemas de extensión como Next.js, alcanzarás un dominio que no solo enriquecerá tu carrera, sino que también te permitirá participar en proyectos cada vez más desafiantes e innovadores.
 
 No olvides que cada aplicación que desarrolles es una oportunidad para presumir tus habilidades y aprendizajes. ¡Sigue adelante, React Frontend Developer!
+
+nota "Create React App está discontinuado lamentablemente, ahora lo mejor es usar Next directamente, o vite
+
+-
+-
+-
+-
+-
+
+React con Create React App
+
+-
+-
+-
+-
+
+npx create-react-app nombre_del_proyecto
+
+npx: nos ayuda a instalar dependencias instalandolas y borrandolas en el mismo momento, es decir que no se queden local en el package.json y node modules
+
+¿Cómo iniciar un proyecto de React desde cero?
+Crear proyectos nuevos de React puede ser una tarea abrumadora, especialmente cuando empiezas a trabajar desde cero. Aunque en muchos cursos utilizamos repositorios preconfigurados, es vital aprender a desarrollar nuestros propios proyectos desde la base. Crear tu proyecto con una configuración básica, o también llamado 'boilerplate', es posible gracias a herramientas populares en la comunidad de React. Una de las más conocidas es Create React App, recomendada para quienes quieran adentrarse en la creación de aplicaciones sin complicarse demasiado con la configuración inicial.
+
+¿Qué es Create React App?
+Create React App (CRA) es una herramienta de línea de comandos que permite configurar proyectos de React de manera rápida y eficiente. CRA automatiza el proceso de creación de un nuevo proyecto, proporcionando una estructura básica bien consolidada y las configuraciones esenciales ya listas para empezar a trabajar. De esta forma, te centras en la lógica de la aplicación sin preocuparte por la instalación y configuración inicial de React y otras dependencias.
+
+¿Cómo usar Create React App?
+Para crear un nuevo proyecto con Create React App, primero asegúrate de tener Node.js y npm instalados en tu sistema. Luego, sigue los siguientes pasos en tu terminal:
+
+Navega hasta la carpeta donde deseas crear tu proyecto.
+
+Ejecuta el siguiente comando utilizando npx:
+
+npx create-react-app nombre-del-proyecto
+Este comando generará automáticamente la estructura básica del proyecto, incluyendo la última versión de React y React DOM, así como una serie de archivos de configuración:
+
+Carpeta src: Contiene los archivos fuente de la aplicación.
+Carpeta public: Archivos estáticos como imágenes o el template HTML principal.
+Archivo package.json: Archivo de configuración para gestionar dependencias.
+Carpeta node_modules: Contiene todas las dependencias necesarias para tu proyecto.
+Archivo README.md: Documentación inicial sobre tu proyecto.
+Resolución de problemas comunes con Create React App
+Al utilizar Create React App, es posible que encuentres algunos errores o problemas técnicos. Aquí te ofrecemos algunos consejos prácticos para solucionarlos:
+
+Lee la consola detenidamente: Muchas veces los errores proporcionarán información precisa sobre el problema.
+Buscar el error en Google: Ordénalo y revisa posibles soluciones en sitios como Stack Overflow.
+Borra caché o desinstala CRA globalmente: Si has utilizado CRA antes, limpia la caché o desinstala versiones antiguas para evitar conflictos.
+Consulta a la comunidad: Participa en foros o utiliza la sección de preguntas en plataformas educativas para obtener ayuda adicional.
+¿Cuáles son las alternativas a Create React App?
+Si bien Create React App es muy popular, existen otras herramientas para iniciar proyectos React que merecen reconocimiento. Pueden ofrecer características más modernas o diferentes estilos de configuración que se adaptan a diversas necesidades. Algunas alternativas incluyen:
+
+Next.js: Un framework React para producción por Vercel, que facilita el desarrollo de aplicaciones con renderizado del lado del servidor (SSR) y generación estática.
+Gatsby: Ideal para crear sitios estáticos rápidamente, ofreciendo un enfoque basado en React.
+Vite: Un build tool más moderno, ideal para proyectos de React por su rapidez en el proceso de construcción y servidor de desarrollo instantáneo.
+Cada herramienta tiene sus propias ventajas y desventajas, y la elección dependerá de lo que necesites para tu proyecto. Asegúrate de evaluar las características y beneficios de cada opción para seleccionar la que mejor se adapte a tus necesidades.
+
+Con esta guía, ya estás preparado para iniciar tus proyectos de React de manera eficiente y estructurada. ¡Sigue explorando nuevas herramientas y métodos para hacer tus procesos de desarrollo más efectivos!
+
+## React con Next.js
+
+-
+-
+-
+-
+-
