@@ -782,3 +782,48 @@ Con esta guía, ya estás preparado para iniciar tus proyectos de React de maner
 -
 -
 -
+
+Nextjs es un framework popular de React, nos permite utilizar server side rendering, propio routing, optimizacion de imagenes, optimizacion de fuentes, es un framework bastante completo y comodo de usar
+
+Next.js esta respaladado por Vercel (CEO Guillermo Rauch)
+
+Se considera Frontend Engineer
+Le encanta trabajar la experiencia de los usuarios
+
+npx create-next-app@latest nombre_del_proyecto
+
+despues una seria de preguntas
+
+¿Qué es Next.js y por qué es tan popular?
+Next.js es un framework altamente popular y esencial para proyectos React.js. Al brindar capacidad para el rendering desde el servidor, y optimización de imágenes y fuentes, proporciona una estructura robusta y eficiente para desarrollar aplicaciones web modernas. Con su propia configuración de enrutamiento y un soporte sólido de Vercel, se ha convertido en un referente en la comunidad de desarrolladores.
+
+Este framework, soportado por su creador y actual CEO de Vercel, Guillermo Rauch, quien se define a sí mismo como un ingeniero frontend, es un potente competidor de Create React App y una herramienta influyente en las implementaciones futuras de React.js.
+
+¿Cómo crear un proyecto en Next.js?
+Iniciar un proyecto con Next.js es un proceso simple y directo, dado que la herramienta npx create-next-app facilita la creación del proyecto desde cero. Para asegurarte de utilizar las últimas funcionalidades, se recomienda utilizar la opción de última versión.
+
+npx create-next-app@latest nombre-del-proyecto
+Al crear un proyecto, Next.js no solo proporciona una estructura básica sino también una configuración avanzada a través de un formulario que permite seleccionar opciones como TypeScript y ESLint, antes de finalizar la creación.
+
+¿Qué estructura tiene un proyecto Next.js?
+Una vez creado un proyecto, se generan varios archivos y carpetas significativas:
+
+Pages: Contiene archivos como index.js y estructuras para enrutamiento basado en el sistema de archivos, lo cual es esencial para el flujo de navegación de la aplicación.
+Public: Carpeta destinada a archivos estáticos.
+next.config.js: Archivo de configuración global donde puedes ajustar el comportamiento de tu aplicación.
+package.json: Incluye las dependencias principales y scripts fundamentales para ejecución, construcción y exportación.
+Next.js se caracteriza por su sencillez y elegancia, manejando dependencias mínimas y relevantes para garantizar una experiencia ágil.
+
+¿Cuáles son los modos de renderización en Next.js?
+Next.js permite trabajar en dos modos principales:
+
+Static Site Generation (SSG): Generación estática de páginas, útil para desplegar en plataformas como GitHub Pages.
+Server-Side Rendering (SSR): Generación de páginas dinámicas en tiempo real desde un servidor, ideal para aplicaciones que requieren contenido frecuentemente actualizado.
+Ambos modos tienen ventajas específicas y conocer cuándo aplicarlos es crucial para diseñar la arquitectura de tu aplicación adecuadamente.
+
+¿Qué hace a Next.js un framework full stack?
+No solo es una herramienta para el frontend; Next.js se presenta como un verdadero framework full stack, posibilitando la creación de APIs directamente desde su estructura. Esto se logra mediante la carpeta API, donde se pueden desarrollar servicios backend simples de manera integrada.
+
+Este modelo de trabajo permite construir aplicaciones que combinan el manejo de datos en el servidor y la presentación en el cliente dentro del mismo entorno, lo que lo convierte en una opción poderosa para desarrolladores que buscan un enfoque holístico en sus proyectos.
+
+Aprender Next.js abre un mundo de posibilidades para desarrolladores que buscan mejorar sus habilidades en el desarrollo web moderno, ofreciendo herramientas sofisticadas y flexibles para enfrentar diversos desafíos de programación. ¡Continúa explorando y desarrollando con este impresionante framework!
