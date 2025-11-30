@@ -1,0 +1,16 @@
+{
+  "files": {
+    "main.css": "/Users/davidgatica/Documents/Projects/Personal/pzdvd-ReactToDoMachine/build/static/css/main.6c12910e.css",
+    "main.js": "/Users/davidgatica/Documents/Projects/Personal/pzdvd-ReactToDoMachine/build/static/js/main.9a4caf9b.js",
+    "index.html": "/Users/davidgatica/Documents/Projects/Personal/pzdvd-ReactToDoMachine/build/index.html",
+    "static/media/platzi.webp": "/Users/davidgatica/Documents/Projects/Personal/pzdvd-ReactToDoMachine/build/static/media/platzi.5b31ce99c22184cfdc82.webp",
+    "static/media/delete.svg": "/Users/davidgatica/Documents/Projects/Personal/pzdvd-ReactToDoMachine/build/static/media/delete.d9c7e0eeb3f573572e1521b7b69ed33e.svg",
+    "static/media/check.svg": "/Users/davidgatica/Documents/Projects/Personal/pzdvd-ReactToDoMachine/build/static/media/check.af03c9a6a0411e40578874e6f00e807b.svg",
+    "main.6c12910e.css.map": "/Users/davidgatica/Documents/Projects/Personal/pzdvd-ReactToDoMachine/build/static/css/main.6c12910e.css.map",
+    "main.9a4caf9b.js.map": "/Users/davidgatica/Documents/Projects/Personal/pzdvd-ReactToDoMachine/build/static/js/main.9a4caf9b.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.6c12910e.css",
+    "static/js/main.9a4caf9b.js"
+  ]
+}
