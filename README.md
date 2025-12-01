@@ -613,3 +613,49 @@ Cuida tus commits y README: Estos son aspectos que evaluadores revisarán; aseg�
 Sé consistente: Usa términos e instrucciones consistentes para que tu repositorio se mantenga accesible y profesional.
 Sé valiente y creativo: Agrega detalles que te diferencien, pero manteniéndolos relevantes y útiles.
 Optimizar tanto tu perfil de GitHub como los repositorios de tus proyectos fortalece tu marca personal. Al mejorar estos aspectos, no solo refuerzas tus habilidades técnicas aprendidas, sino que también te preparas mejor para comunicar y proyectar tus habilidades de manera efectiva a nivel profesional.
+
+Versiones De React
+
+Es importante como developer tienes que tener en cuenta que puedes encontrarte frecuentemente con diferentes versiones de React
+
+Hay que saber como cambiar entre una y otra
+
+Cada vez que tengas un problema con cambio de versiones e instalaciones
+eliminar
+node_modules
+package.lock.json
+
+rm -rf node_modules (eliminar recursivamente)
+rm package.lock.json
+
+ejemplo:
+
+18 react-dom/client
+17 react-dom
+
+ejemplo:
+en lugar de preguntarse porque se rompe la version en react 17
+
+changes react 18 y 17
+
+how to downgrade
+how to upgrade
+
+Actualizacines en la API de renderizado del cliente
+
+Es importante saber adaptarse a cualquier version de react y practicas del equipo de trabajo
+
+Tambien se puede proponaer soluciones con fundamento
+
+ejemplo:
+Estamos en la version 13 pero un miembro del equipo se dio cuenta que con la version 14 carga un segundo mas rapido
+
+Esto ayuda a la optimozacion de la aplicacion por tanto al usuario por eso si seria una buena idea hacer upgrade
+
+A veces es mas importante analizar:
+La arquitectura
+La situacion del equipo
+la interaccion de los usuarios
+lo que sea necesario para conseguir la mejor experiencia para el usuario
+
+en lugar de nuevas tendencias y tecnologias que aun no sean estables o no tengan una necesidad relevante en el proyecto
